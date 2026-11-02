@@ -1,0 +1,20 @@
+Tarea,Sprint,RF,Estado
+Proyecto TypeScript + Vitest,1,-,Finalizado
+Workflow de GitHub Actions,1,-,Finalizado
+Clase Contacto + tests,1,RF-03,Finalizado
+Clase Agenda (ABM sin duplicados) + tests,1,RF-03,Finalizado
+"Clase Correo (id, validación, destinatarios protegidos) + tests",1,RF-01,Finalizado
+Leído / no leído + tests,1,RF-08,Finalizado
+Indicador de favorito + tests,1,RF-09,Finalizado
+Clase Bandeja + tests,2,RF-06,Pendiente
+"GestorDeCorreos: mover, eliminar, restaurar",2,RF-06,Pendiente
+"Borradores: crear, editar, recuperar",2,RF-07,Pendiente
+Envío (desde nuevo y desde borrador),2,RF-02,Pendiente
+Vista de favoritos,2,RF-09,Pendiente
+No leídos de una bandeja,2,RF-08,Pendiente
+Diagrama de clases UML (borrador),2,-,Pendiente
+Búsqueda de texto libre,3,RF-04,Pendiente
+Predicados y combinadores AND/OR/NOT,3,RF-05,Pendiente
+Registro de filtros (máx. 5) + 3 filtros complejos,3,RF-05,Pendiente
+Estadísticas (map / filter / reduce),3,RF-10,Pendiente
+Informe técnico + UML final,3,-,Pendiente
