@@ -1,0 +1,25 @@
+{
+  "name": "posthand",
+  "version": "0.1.0",
+  "description": "Gestor de correos electrónicos con filtros dinámicos (AE4 - Paradigmas y Lenguajes II, UCP)",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc -p tsconfig.test.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valenbasiuk/posthand.git"
+  },
+  "author": "Diego Valentino Basiuk Fetter",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "@vitest/coverage-v8": "^5.0.5",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.5"
+  }
+}
