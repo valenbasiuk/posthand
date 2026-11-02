@@ -1,0 +1,37 @@
+# Integración continua: en cada push o pull request a main,
+# GitHub levanta una máquina Linux, instala dependencias,
+# compila el proyecto y corre todos los tests.
+# Si algo falla, el commit queda marcado con una ❌ en GitHub.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Chequeo de tipos (src + tests)
+        run: npm run typecheck
+
+      - name: Compilar
+        run: npm run build
+
+      - name: Ejecutar tests con cobertura
+        run: npm run coverage
