@@ -1,4 +1,4 @@
-# posthand — Gestor de Correos con Filtros Dinámicos
+# posthand — Gestor de correos con filtros
 
 ![CI](https://github.com/valenbasiuk/posthand/actions/workflows/ci.yml/badge.svg)
 
@@ -10,7 +10,7 @@ Sistema de gestión de correos electrónicos en **TypeScript** que combina
 **Programación Funcional** (búsquedas, filtros y estadísticas),
 desarrollado con **TDD** y **integración continua** en GitHub Actions.
 
-## Cómo correrlo
+## howto
 
 ```bash
 npm install
