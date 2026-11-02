@@ -19,6 +19,8 @@ export interface DatosCorreo {
  * - Los destinatarios se guardan en un array privado; hacia afuera solo se
  *   expone una copia de solo lectura, así nadie puede saltarse las reglas
  *   (por ejemplo, agregar duplicados) modificando el array directamente.
+ *
+ * RF-08: estado de lectura (leído / no leído).
  */
 export class Correo {
   readonly id: string;
@@ -28,6 +30,7 @@ export class Correo {
   private readonly _asunto: string;
   private readonly _cuerpo: string;
   private readonly _para: Contacto[] = [];
+  private _leido = false;
 
   constructor(remitente: Contacto, datos: DatosCorreo = {}) {
     if (!(remitente instanceof Contacto)) {
@@ -79,6 +82,20 @@ export class Correo {
 
   puedeEnviarse(): boolean {
     return this.validarParaEnvio().length === 0;
+  }
+
+  // ---------- RF-08: estado de lectura ----------
+
+  get leido(): boolean {
+    return this._leido;
+  }
+
+  marcarComoLeido(): void {
+    this._leido = true;
+  }
+
+  marcarComoNoLeido(): void {
+    this._leido = false;
   }
 
   // ---------- privados ----------

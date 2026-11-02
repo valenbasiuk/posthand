@@ -18,6 +18,11 @@ describe('RF-01 · Creación de correos', () => {
     expect(correo.fechaCreacion).toBeInstanceOf(Date);
   });
 
+  it('nace como no leído', () => {
+    const correo = new Correo(ana, { asunto: 'Hola', para: [beto] });
+    expect(correo.leido).toBe(false);
+  });
+
   it('permite crear múltiples correos con distintos remitentes y destinatarios', () => {
     const c1 = new Correo(ana, { asunto: 'A', para: [beto] });
     const c2 = new Correo(beto, { asunto: 'B', para: [ana, caro] });
@@ -100,5 +105,35 @@ describe('RF-01 · Creación de correos', () => {
     it('informa todos los problemas a la vez', () => {
       expect(new Correo(ana).validarParaEnvio()).toHaveLength(2);
     });
+  });
+});
+
+describe('RF-08 · Leído / no leído', () => {
+  it('se puede marcar como leído', () => {
+    const correo = new Correo(ana, { asunto: 'Hola', para: [beto] });
+    correo.marcarComoLeido();
+    expect(correo.leido).toBe(true);
+  });
+
+  it('se puede volver a marcar como no leído', () => {
+    const correo = new Correo(ana, { asunto: 'Hola', para: [beto] });
+    correo.marcarComoLeido();
+    correo.marcarComoNoLeido();
+    expect(correo.leido).toBe(false);
+  });
+
+  it('el estado se mantiene al consultarlo varias veces y es idempotente', () => {
+    const correo = new Correo(ana, { asunto: 'Hola', para: [beto] });
+    correo.marcarComoLeido();
+    correo.marcarComoLeido();
+    expect(correo.leido).toBe(true);
+    expect(correo.leido).toBe(true);
+  });
+
+  it('cambiar el estado de un correo no afecta a otros', () => {
+    const c1 = new Correo(ana, { asunto: 'A', para: [beto] });
+    const c2 = new Correo(ana, { asunto: 'B', para: [beto] });
+    c1.marcarComoLeido();
+    expect(c2.leido).toBe(false);
   });
 });
