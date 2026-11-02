@@ -21,6 +21,7 @@ export interface DatosCorreo {
  *   (por ejemplo, agregar duplicados) modificando el array directamente.
  *
  * RF-08: estado de lectura (leído / no leído).
+ * RF-09 (parcial): indicador de favorito.
  */
 export class Correo {
   readonly id: string;
@@ -31,6 +32,7 @@ export class Correo {
   private readonly _cuerpo: string;
   private readonly _para: Contacto[] = [];
   private _leido = false;
+  private _favorito = false;
 
   constructor(remitente: Contacto, datos: DatosCorreo = {}) {
     if (!(remitente instanceof Contacto)) {
@@ -96,6 +98,20 @@ export class Correo {
 
   marcarComoNoLeido(): void {
     this._leido = false;
+  }
+
+  // ---------- RF-09: favorito ----------
+
+  get favorito(): boolean {
+    return this._favorito;
+  }
+
+  marcarComoFavorito(): void {
+    this._favorito = true;
+  }
+
+  desmarcarComoFavorito(): void {
+    this._favorito = false;
   }
 
   // ---------- privados ----------

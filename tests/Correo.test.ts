@@ -18,9 +18,10 @@ describe('RF-01 · Creación de correos', () => {
     expect(correo.fechaCreacion).toBeInstanceOf(Date);
   });
 
-  it('nace como no leído', () => {
+  it('nace como no leído y no favorito', () => {
     const correo = new Correo(ana, { asunto: 'Hola', para: [beto] });
     expect(correo.leido).toBe(false);
+    expect(correo.favorito).toBe(false);
   });
 
   it('permite crear múltiples correos con distintos remitentes y destinatarios', () => {
@@ -135,5 +136,15 @@ describe('RF-08 · Leído / no leído', () => {
     const c2 = new Correo(ana, { asunto: 'B', para: [beto] });
     c1.marcarComoLeido();
     expect(c2.leido).toBe(false);
+  });
+});
+
+describe('RF-09 (parcial) · Indicador de favorito', () => {
+  it('se puede marcar y desmarcar como favorito', () => {
+    const correo = new Correo(ana, { asunto: 'Hola', para: [beto] });
+    correo.marcarComoFavorito();
+    expect(correo.favorito).toBe(true);
+    correo.desmarcarComoFavorito();
+    expect(correo.favorito).toBe(false);
   });
 });
